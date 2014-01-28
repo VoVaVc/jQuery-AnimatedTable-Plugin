@@ -1,0 +1,653 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="common_files/styles.css">
+		<link rel="stylesheet" type="text/css" href="animatedTable.css">
+		<link rel="stylesheet" type="text/css" href="common_files/xcode.css">
+		<script src="common_files/jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="animatedTable.jquery.js" type="text/javascript"></script>
+		<script src="common_files/highlight.pack.js" type="text/javascript"></script>
+		<script src="common_files/main.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<article>
+			<ul>
+				<li class="heading">examples</li>
+				<li data-page="rows">add or remove rows</li>
+				<li data-page="cols">add or remove cols</li>
+				<li data-page="cells">add or remove cells</li>
+				<li data-page="drag">drag cells</li>
+				<li data-page="exchange">exchange cells</li>
+				<li class="heading">docs</li>
+				<li data-page="init">installing</li>
+				<li data-page="options">options</li>
+				<li data-page="methods">methods</li>
+			</ul>
+		</article>
+		 <section class="rows">
+			<h2>Use left mouse button to clone rows and right button to delete it or use right control panel</h2>
+			<table>
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+			<form>
+			<dl>
+				<dd>
+					<label>Add row<input type="radio" name="row_type" data-segment="addRowFormBlock" checked></label>
+					<label>Remove row<input type="radio" name="row_type" data-segment="removeRowFormBlock"></label>
+				</dd>
+			</dl>
+			<div class="addRowFormBlock fadeBlock show">
+				<p>Index: <input type="number" value="0" id="rowAddIndex" min="0"></p>
+				<div class="rowAddContext">
+					<p>Row data: </p>
+					<input type="text" placeholder="Input cell1 context">
+					<input type="text" placeholder="Input cell2 context">
+					<input type="text" placeholder="Input cell3 context">
+					<input type="text" placeholder="Input cell4 context">
+				</div>
+				<button class="addRow">Add row</button>
+			</div>
+			<div class="removeRowFormBlock fadeBlock">
+				<p>Identifyer <input type="text" id="rowRemoveIndex" placeholder="index or jQuery selector"></p>
+				<button class="removeRow">Remove row</button>
+			</div>
+			</form>
+		 </section>
+		 
+		 <section class="cols">
+			<h2>Use left mouse button to clone columns and right button to delete it</h2>
+			<table>
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+			<form>
+				<dl>
+					<dd>
+						<label>Add col<input type="radio" name="row_type" data-segment="addColFormBlock" checked></label>
+						<label>Remove col<input type="radio" name="row_type" data-segment="removeColFormBlock"></label>
+					</dd>
+				</dl>
+				<div class="addColFormBlock fadeBlock show">
+					<p>Index: <input type="number" value="0" id="colAddIndex" min="0"></p>
+					<p>Head data: <input type="text" id="colAddHead" placeholder="Input head data"></p>
+					<div class="colAddContext">
+						<p>Row data: </p>
+						<input type="text" placeholder="Input cell1 context">
+						<input type="text" placeholder="Input cell2 context">
+						<input type="text" placeholder="Input cell3 context">
+						<input type="text" placeholder="Input cell4 context">
+					</div>
+					<button class="addCol">Add col</button>
+				</div>
+				<div class="removeColFormBlock fadeBlock">
+					<p>Index <input type="text" id="colRemoveIndex" placeholder="index"></p>
+					<button class="removeCol">Remove col</button>
+				</div>
+			</form>
+		 </section>
+		 <section class="cells">
+			<h2>Use left mouse button to clone cells and right button to delete it or use control panel</h2>
+			<table>
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+			<form>
+			<dl>
+				<dd>
+					<label>Add cell<input type="radio" name="row_type" data-segment="addCellFormBlock" checked></label>
+					<label>Remove cell<input type="radio" name="row_type" data-segment="removeCellFormBlock"></label>
+				</dd>
+			</dl>
+			<div class="addCellFormBlock fadeBlock show">
+				<p>TR index: <input type="number" value="0" id="cellTRIndex" min="-1"></p>
+				<p>TD index: <input type="number" value="0" id="cellTDIndex" min="-1"></p>
+				<p>Cell content: <input type="text" value="0" id="cellTextAdd"></p>
+				<button class="addCell">Add cell</button>
+			</div>
+			<div class="removeCellFormBlock fadeBlock">
+				<p>Provide a selector</p>
+				<p>selector (without brackets and quotes)<input type="text" id="rowRemoveSelector"></p>
+				<p>Or input tr & td indexes</p>
+				<p>tr index <input type="text" id="rowRemoveIndexTr"></p>
+				<p>td index <input type="text" id="rowRemoveIndexTd"></p>
+				<button class="removeCell">remove cell</button>
+			</div>
+			</form>
+		 </section>
+
+		 <section class="drag">
+			<h2>Drag cells to change their place or copy them to another place</h2>
+			<table id="drag1">
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<form>
+				<div class="dragFormBlock">
+					<p>z-index: <input type="number" value="999" id="dragZindex"></p>
+					<p>delay: <input type="number" value="150" id="dragDelay"></p>
+					<p>snap: <input type="checkbox" id="dragSnap"></p>
+					<p>copy: <input type="checkbox" id="dragCopy"></p>
+					<button class="dragCell">Apply</button>
+				</div>
+			</form>
+
+			<table id="drag2" style="position: absolute;right: 10px;">
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+		 </section>
+
+		 <section class="exchange">
+			<h2>This example works only with control panel</h2>
+			<table>
+				<thead>
+					<th>Name</th>
+					<th>Price</th>
+					<th>In stock</th>
+					<th>Color</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Hat for cat</td>
+						<td>9.99$</td>
+						<td>56</td>
+						<td>blue</td>
+					</tr>
+					<tr>
+						<td>Haloween honey</td>
+						<td>3.99$</td>
+						<td>24</td>
+						<td>gloomy</td>
+					</tr>
+					<tr>
+						<td>Predator pumpkin</td>
+						<td>29.95$</td>
+						<td>6</td>
+						<td>orange</td>
+					</tr>
+					<tr>
+						<td>Bright stones</td>
+						<td>6.90$</td>
+						<td>78</td>
+						<td>bright</td>
+					</tr>
+				</tbody>
+			</table>
+			<form>
+			<div class="fadeBlock show">
+				<p>cell1 (without brackets or quotes, table already selected): <input type="text" value="tr:nth-child(1) td:nth-child(1)" placeholder="selector" id="exchangeCell1"></p>
+				<p>cell2 (without brackets or quotes, table already selected): <input type="text" value="tr:nth-child(1) td:nth-child(2)" placeholder="selector" id="exchangeCell2"></p>
+				<p>copy: <input type="checkbox" id="exchangeCopy"></p>
+				<p>preventFade: <input type="checkbox" id="exchangeFade"></p>
+				<button class="exchangeBtn">Exchange</button>
+			</div>
+			</form>
+		 </section>
+
+		 <section class="init show">
+			<h2>Initating the plugin</h2>
+			<p>To install the plugin you need two files.</p>
+			<ol>
+				<li>jQuery.js - the library itself, you can download it from <a href="http://jquery.com/download/" target="_blank">here</a></li>
+				<li>animatedTable.jquery.js - main plugin script</li>
+			</ol>
+			<p>example:</p>
+			<code class="html">
+				&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+				&lt;script src="animatedTable.jquery.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+			</code>
+			<p>insert this to your &lt;head&gt; and locate files in same directory or specify path to them</p>
+			<p>Optionaly you can include animatedTable.css stylesheet, it contains default style for your tables</p>
+			<p>Before using the plugin you need to initate it like this:</p>
+			<code class="javascript">
+				$('table').animatedTable()
+			</code>
+			<p><br>&nbsp;$('table') must be a table</p>
+			<p>to apply some options to plugin you need the following construction</p>
+			<code class="javascript">
+				$('table').animatedTable({<br>
+					&nbsp;&nbsp;&nbsp;debug: true,<br>
+					&nbsp;&nbsp;&nbsp;option1: value,<br>
+					&nbsp;&nbsp;&nbsp;option2: value<br>
+				})
+			</code>
+			<p><br>&nbsp;list options like this and you are ready to go further</p>
+		</section>
+
+		<section class="options">
+			<h2>Plugin options</h2>
+			<div class="listing">
+				<ul>
+					<li>Debug</li>
+					<div>
+						<span>Type: boolean</span>
+						<span>Default: false</span>
+						<p>If set to true errors will be logged</p>
+					</div>
+					<li>Duration</li>
+					<div>
+						<span>Type: numeric</span>
+						<span>Default: 500</span>
+						<p>Sets up animation speed</p>
+					</div>
+					<li>wrapperClass</li>
+					<div>
+						<span>Type: string</span>
+						<span>Default: animatedTable</span>
+						<p>Class, that will be added to wrapper divs, which control animation</p>
+					</div>
+					<li>tableClass</li>
+					<div>
+						<span>Type: string</span>
+						<span>Default: animatedTableMain</span>
+						<p>Class, that will be added to table</p>
+					</div>
+					<li>cellAnimation</li>
+					<div>
+						<span>Type: custom string</span>
+						<span>Default: horizontal</span>
+						<p>Possible values: </p>
+						<ol>
+							<li>horizontal</li>
+							<li>vertical</li>
+						</ol>
+						<p>Defines animation for add/remove cell method, if set to vertical cell will appear with vertical animation, else it will run horizontally</p>
+					</div>
+					<li>dragCell</li>
+					<div>
+						<span>Type: boolean</span>
+						<span>Default: true</span>
+						<p>If set to true your table cells can be dragged around</p>
+					</div>
+					<li>dragCellDelay</li>
+					<div>
+						<span>Type: numeric</span>
+						<span>Default: 150</span>
+						<p>Specifies delay between mousedown and drag start, works only if dragCell set to true</p>
+					</div>
+					<li>dragCellSnap</li>
+					<div>
+						<span>Type: boolean</span>
+						<span>Default: false</span>
+						<p>If set to true, after delay gone cell will be snapped to cursor even after mouseup, to release drag you need to click second time,  works only if dragCell set to true</p>
+					</div>
+					<li>dragCellCopy</li>
+					<div>
+						<span>Type: boolean</span>
+						<span>Default: false</span>
+						<p>If set to true, drag function won't exchange cells, but copy dragging one to release point, works only if dragCell set to true</p>
+					</div>
+					<li>dragZindex</li>
+					<div>
+						<span>Type: numeric</span>
+						<span>Default: 999</span>
+						<p>Specifies z-index for dragging cell, works only if dragCell set to true</p>
+					</div>
+					<li>exchangeFade</li>
+					<div>
+						<span>Type: boolean</span>
+						<span>Default: true</span>
+						<p>If set to true exchanging cells will be animated with fade</p>
+					</div>
+					<li>exchangeFadeDuration</li>
+					<div>
+						<span>Type: numeric</span>
+						<span>Default: 500</span>
+						<p>Specifies animation speed for exchanging cells</p>
+					</div>
+				</ul>
+			</div>
+		</section>
+
+		<section class="methods">
+			<h2>Plugin methods</h2>
+			<div class="listing large">
+				<ul>
+					<li>init</li>
+					<div>
+						<span>$(element).animatedTable(options)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>options - object, contains different options, full list of avalible options you can watch <a href="#" data-page="options">here</a></li>
+						</ol>
+						<p>Initates plugin, on this step each cell content wraps in a special div, that makes animation possible. Run this constructor before calling any other method.</p>
+						<p>example: </p>
+						<code class="javascript">
+							$('table').animatedTable({<br>
+								&nbsp;&nbsp;&nbsp;debug: true,<br>
+								&nbsp;&nbsp;&nbsp;dragCell: true<br>
+								&nbsp;&nbsp;&nbsp;duration: 1000,<br>
+							})
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>addRow</li>
+					<div>
+						<span>$(element).animatedTable('addRow', data, trIndex)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>data - selector, node/nodes or jquery object</li>
+							<li>trIndex - index number, specifying after which row new row must be appended</li>
+						</ol>
+						<p>Adds row with specified params and smooth animation</p>
+						<p>example 1, this will clone first row to bottom: </p>
+						<code class="javascript">
+							$('table').animatedTable('addRow', $('table tr:nth-child(1)'), 999)
+						</code>
+						<p>example 2, this will create a new row and place it after second row: </p>
+						<code class="javascript">
+							$('table').animatedTable('addRow', '&lt;td&gt;some&lt;/td&gt;&lt;td&gt;text&lt;/td&gt;&lt;td&gt;here&lt;/td&gt;', 1)
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>removeRow</li>
+					<div>
+						<span>$(element).animatedTable('removeRow', identifier)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>identifier - selector, existing node, jquery object or index number</li>
+						</ol>
+						<p>Removes row by identifier with smooth animation</p>
+						<p>example 1, this will remove first row: </p>
+						<code class="javascript">
+							$('table').animatedTable('removeRow', $('table tr:nth-child(1)'))
+						</code>
+						<p>example 2, this will remove second row: </p>
+						<code class="javascript">
+							$('table').animatedTable('removeRow', 2)
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>addCol</li>
+					<div>
+						<span>$(element).animatedTable('addCol', colHead, colIndex, data, isBefore)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>colHead - selector, node, jquery object or text, that will be appeared as column head</li>
+							<li>colIndex - index number, after which will be added a new column</li>
+							<li>data - selector, nodes, jquery objects or array of td elements, which will be added in each row</li>
+							<li>isBefore - optional, if set to true columnt will appear before specified index instead of after</li>
+						</ol>
+						<p>Adds column with specified params and smooth animation</p>
+						<p>example 1, this will add a column to the first place</p>
+						<code class="javascript">
+							$('table').animatedTable('addCol', 'new Column', 0, ['&lt;td&gt;123&lt;/td&gt;', '124', '235', '226'], true)
+						</code>
+						<p>example 2, this will add a new column as third one: </p>
+						<code class="javascript">
+							$('section.show table').animatedTable('addCol', 'new Column', 1, $('&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;'))
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>removeCol</li>
+					<div>
+						<span>$(element).animatedTable('removeCol', index)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>index - column index number</li>
+						</ol>
+						<p>Removes column with smooth animation</p>
+						<p>example, this will remove first column</p>
+						<code class="javascript">
+							$('table').animatedTable('removeCol', 0)
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>addCell</li>
+					<div>
+						<span>$(element).animatedTable('addCell', trIndex, tdIndex, cell, isBefore)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>trIndex - row index number, which will receive a new cell</li>
+							<li>tdIndex - cell index number, after which will be added a new cell</li>
+							<li>cell - selector, node, jquery object or text, this is a content, which will be added to new cell</li>
+							<li>isBefore - optional, if set to true new cell will be appended before specified tdIndex</li>
+						</ol>
+						<p>Adds cell with smooth animation</p>
+						<p>example 1, this will add new cell to the first place in first row</p>
+						<code class="javascript">
+							$('table').animatedTable('addCell', 0, 0, '&lt;span&gt;I am new here&lt;/span&gt;', true)
+						</code>
+						<p>example 2, this will add new cell to the third place in second row</p>
+						<code class="javascript">
+							$('table').animatedTable('addCell', 1, 1, 'Hi, me too')
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>removeCell</li>
+					<div>
+						<span>$(element).animatedTable('removeCell', trIndex, tdIndex)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>trIndex - can be selector, exsisting node, jquery object or index number of row</li>
+							<li>tdIndex - index number of cell to remove, required only if trIndex is index number</li>
+						</ol>
+						<p>Removes cell with smooth animation. Warning, you can pass this method with 1 or 2 arguments, if argument is single, you need to specify a selector for your td to remove, else method accepts index of tr and td</p>
+						<p>example 1, this will remove first cell in first row</p>
+						<code class="javascript">
+							$('table').animatedTable('removeCell', 0, 0)
+						</code>
+						<p>example 2, this will remove row with id='removeMe'</p>
+						<code class="javascript">
+							$('table').animatedTable('removeCell', $('#removeMe'))
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>exchangeCells</li>
+					<div>
+						<span>$(element).animatedTable('exchangeCells', cell1, cell2, clone, preventFade)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>cell1 - selector, existing node or jquery object, this cell will be placed to cell2 position or copied there</li>
+							<li>cell2 - selector, existing node or jquery object, this cell will be placed to cell1 position or overwrited</li>
+							<li>clone - if set to true cell1 will be copied and overwrite cell2</li>
+							<li>preventFade - column index number</li>
+						</ol>
+						<p>Exchange or clone colums with or without animation</p>
+						<p>example 1, this will exchange first cell in first row and last cell in first row</p>
+						<code class="javascript">
+							$('table').animatedTable('exchangeCells', $('table tr:nth-child(1) td:nth-child(1)'),  $('table tr:nth-child(1) td:last'))
+						</code>
+						<p>example 2, this will clone first cell in first row to last cell in last row without animation</p>
+						<code class="javascript">
+							$('table').animatedTable('exchangeCells', $('table tr:nth-child(1) td:nth-child(1)'),  $('table tr:last td:last'), true, true)
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>option</li>
+					<div>
+						<span>$(element).animatedTable('option', name, value)</span>
+						<p>Arguments: </p>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+							<li>name - option name string or array of options</li>
+							<li>value - option value, required only if name is a string</li>
+						</ol>
+						<p>Applies option to specified table. Full list of options avalible <a href="#" data-page="options">here</a></p>
+						<p>example 1, this will apply dragCell mode</p>
+						<code class="javascript">
+							$('table').animatedTable('option', 'dragCell', true)
+						</code>
+						<p>example 2, this will apply multiple options</p>
+						<code class="javascript">
+							$('table').animatedTable('option', {<br>
+								&nbsp;&nbsp;&nbsp;'dragCell': true,<br>
+								&nbsp;&nbsp;&nbsp;'dragCellCopy': true,<br>
+								&nbsp;&nbsp;&nbsp;'dragCellSnap': true,<br>
+								&nbsp;&nbsp;&nbsp;'dragCellDelay': 1000<br>
+							})
+						</code>
+						<p>&nbsp;</p>
+					</div>
+					<li>destroy</li>
+					<div>
+						<span>$(element).animatedTable('destroy')</span>
+						<ol>
+							<li>element - can be selector, node or jquery object</li>
+						</ol>
+						<p>Simply destroys plugin</p>
+					</div>
+				</ul>
+			</div>
+		</section>
+	</body>
+</html>

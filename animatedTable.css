@@ -1,0 +1,44 @@
+/* makeup stylesheet */
+
+table 
+{
+	background: #F1F1F1;
+	border-radius: 12px;
+	border: 2px solid #AFAFAF;
+	border-spacing: 0;
+}
+
+	table th 
+	{
+		background: #f0efef;
+		background: -moz-linear-gradient(top, #f0efef 0%, #ededed 28%, #dfdfdd 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0efef), color-stop(28%,#ededed), color-stop(100%,#dfdfdd));
+		background: -webkit-linear-gradient(top, #f0efef 0%,#ededed 28%,#dfdfdd 100%);
+		background: -o-linear-gradient(top, #f0efef 0%,#ededed 28%,#dfdfdd 100%);
+		background: -ms-linear-gradient(top, #f0efef 0%,#ededed 28%,#dfdfdd 100%);
+		background: linear-gradient(to bottom, #f0efef 0%,#ededed 28%,#dfdfdd 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0efef', endColorstr='#dfdfdd',GradientType=0 );
+	}
+
+	table td 
+	{
+		background: #F1F1F1;
+	}
+
+	table th, table td
+	{
+		 border-right: 1px solid #AFAFAF;
+		 border-bottom: 1px solid #AFAFAF;
+		 padding: 5px 10px;
+	}
+
+		table th:first-of-type
+		{
+			border-top-left-radius: 12px;
+		}
+
+		table th:last-of-type
+		{
+			border-top-right-radius: 12px;
+			border-right: none;
+		}
